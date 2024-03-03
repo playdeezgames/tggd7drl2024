@@ -18,3 +18,6 @@ class Context:
                 ord(character)
             )
             xy = (xy[0] + 1, xy[1])
+
+    def write_text_xy_centered(self, y, text, color, columns=grimoire.CELL_COLUMNS):
+        self.write_text_xy(((columns - len(text)) // 2, y), text, color)

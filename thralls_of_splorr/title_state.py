@@ -1,3 +1,6 @@
+import grimoire
+
+
 class TitleState:
     def __init__(self, my_context):
         self.context = my_context
@@ -6,4 +9,4 @@ class TitleState:
         pass
 
     def draw(self):
-        self.context.write_text_xy((0, 0), "Thralls of SPLORR!!", 15)
+        self.context.write_text_xy_centered(grimoire.CELL_ROWS // 2, "Thralls of SPLORR!!", 15)
