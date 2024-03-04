@@ -1,8 +1,8 @@
 import pygame
-
 import context
 import grimoire
 import assets
+import in_play_state
 import title_state
 
 
@@ -16,6 +16,7 @@ class Host:
         self.context = context.Context(self.assets, self.screen)
         self.states = {
             grimoire.STATE_TITLE: title_state.TitleState(self.context),
+            grimoire.STATE_IN_PLAY: in_play_state.InPlayState(self.context),
         }
         self.current_state = grimoire.STATE_TITLE
 
@@ -27,7 +28,7 @@ class Host:
             if event.type == pygame.QUIT:
                 return False
             else:
-                self.get_current_state().handle_event(event)
+                self.current_state = self.get_current_state().handle_event(event)
         return True
 
     def __draw(self):
