@@ -9,6 +9,9 @@ class Context:
         self.target = target
         self.world = None
 
+    def get_world(self):
+        return self.world
+
     def write_text_xy(self, xy, text, color):
         for character in text:
             self.assets.blit_tile(
@@ -34,7 +37,10 @@ class Context:
                 if pick_up is not None:
                     my_item_type = item_types.TABLE[pick_up.item_type]
                     self.write_text_xy((pick_up.position, y), my_item_type.text, my_item_type.color)
-        self.write_text_xy((xy[0] + self.world.position[0], xy[1] + self.world.position[1]), "\x02", 15)
+        if self.world.game_over:
+            self.write_text_xy((xy[0] + self.world.position[0], xy[1] + self.world.position[1]), "\x01", 4)
+        else:
+            self.write_text_xy((xy[0] + self.world.position[0], xy[1] + self.world.position[1]), "\x02", 15)
 
     def set_direction(self, direction):
         self.world.direction = direction

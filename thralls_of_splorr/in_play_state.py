@@ -1,6 +1,7 @@
 import pygame
-
+import messages
 import grimoire
+import stats
 
 
 class InPlayState:
@@ -14,6 +15,9 @@ class InPlayState:
         elif key == pygame.K_RIGHT:
             self.context.set_direction(1)
             self.context.advance()
+        elif key == pygame.K_DOWN:
+            self.context.set_direction(0)
+            self.context.advance()
         return grimoire.STATE_IN_PLAY
 
     def handle_event(self, event):
@@ -23,3 +27,5 @@ class InPlayState:
 
     def draw(self):
         self.context.draw_board((0, 0))
+        stats.draw(self.context)
+        messages.draw(self.context)
