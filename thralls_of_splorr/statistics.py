@@ -1,0 +1,6 @@
+HEALTH = "health"
+ENERGY = "energy"
+SCORE = "score"
+ENERGY_DELTA = "energy delta"
+EXPERIENCE = "experience"
+EXPERIENCE_LEVEL = "experience level"

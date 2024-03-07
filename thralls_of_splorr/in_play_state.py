@@ -18,6 +18,8 @@ class InPlayState:
         elif key == pygame.K_DOWN:
             self.context.set_direction(0)
             self.context.advance()
+        elif key == pygame.K_ESCAPE:
+            return grimoire.STATE_TITLE
         return grimoire.STATE_IN_PLAY
 
     def handle_event(self, event):

@@ -32,3 +32,10 @@ def draw(my_context):
         for x in range(COLUMNS):
             cell = grid[y][x]
             my_context.write_text_xy((x, y + OFFSET_Y), cell[1], cell[0])
+
+
+def clear():
+    global grid
+    global cell_index
+    grid = [[(7, " ") for _ in range(0, COLUMNS)] for _ in range(0, ROWS)]
+    cell_index = 0

@@ -1,6 +1,7 @@
 import grimoire
 import world
 import item_types
+import messages
 
 
 class Context:
@@ -30,8 +31,21 @@ class Context:
 
     def start_game(self):
         self.world = world.World()
+        messages.clear()
 
     def draw_board(self, xy):
+        x = self.world.position[0] - 1
+        y = self.world.position[1] + 1
+        w = 3
+        while y < grimoire.BOARD_ROWS:
+            for n in range(w):
+                self.write_text_xy((x + n, y), "\xdb", 8)
+            self.write_text_xy((x, y), "/", 0)
+            self.write_text_xy((x + w - 1, y), "\\", 0)
+            self.write_text_xy((x + w // 2, y), "|", 0)
+            x -= 1
+            y += 1
+            w += 2
         for y in range(0, grimoire.BOARD_ROWS):
             for pick_up in self.world.pick_ups[y]:
                 if pick_up is not None:
